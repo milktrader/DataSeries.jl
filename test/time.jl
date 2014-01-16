@@ -1,4 +1,4 @@
-using MarketData, FactCheck
+using MarketData
 
 facts("Time") do
 

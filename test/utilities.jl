@@ -1,4 +1,4 @@
-using MarketData, FactCheck
+using MarketData
 
 bt = SeriesArray([1:3], trues(3))
 ba = push!(bt, SeriesPair(4, false))
