@@ -1,9 +1,8 @@
-using FactCheck, MarketData
+using MarketData
 
 facts("IO") do
 
   context("values are correct") do
-
     @fact op[1].value  => 105.76
     @fact hi[1].value  => 106.08
     @fact lo[1].value  => 103.26

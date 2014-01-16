@@ -1,4 +1,4 @@
-using MarketData, FactCheck
+using MarketData
 
 nam = SeriesArray([1:3], [2:4], "test")
 boo = SeriesArray([1:3], trues(3))
