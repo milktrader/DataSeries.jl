@@ -9,7 +9,7 @@ facts("Series") do
   context("values are correct on operators") do
     @fact (op[1] + op[1]).value => 211.52
     #@fact (op[1] - op[1]).value => 0
-    @fact (op[1] - op[1]).value => 1
+    @fact (op[1] - op[1]).value => 0
     @fact (op[1] * op[1]).value => 11185.1776
     @fact (op[1] / op[1]).value => 1
     @fact op[1] / op[2]         => nothing  # since indexes don't match, nothing is returned
