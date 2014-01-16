@@ -218,6 +218,13 @@ function moving{T,V}(sa::Array{SeriesPair{T,V},1}, f::Function, window::Int)
   SeriesArray(idx, val)
 end
 
+function fastmoving{T,V}(sa::Array{SeriesPair{T,V},1}, f::Function, window::Int) 
+
+  idx = T[s.index for s in sa][window:end]
+  val = float(collect(imap(f, partition(value(sa), window, 1))))
+  SeriesArray(idx, val)
+end
+
 #################################
 # upto ##########################
 #################################

@@ -1,6 +1,6 @@
 module Series
 
-using Datetime
+using Datetime, Iterators
 
 import Base.show,
        Base.isless
@@ -16,6 +16,7 @@ export SeriesPair,
        lag, lead, 
        percentchange, 
        moving, upto,  
+       fastmoving,
        byyear, bymonth, byday, bydow, bydoy, 
        from, to, collapse 
   
