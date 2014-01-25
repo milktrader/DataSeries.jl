@@ -129,6 +129,19 @@ for op in [:>, :<, :>=, :<=,
   end # eval
 end # loop
 
+for op in [:>, :<, :>=, :<=,
+           :.>, :.<, :.>=, :.<=]
+  @eval begin
+    function ($op){T,V}(sa::Array{SeriesPair{T,V}, 1}, n::Union(Float64, Int))
+      res = SeriesPair{T,Bool}[]
+      for i in 1:size(sa,1)
+        push!(res, SeriesPair(sa[i].index, ($op)(sa[i].value, n)))
+      end
+      res
+    end # function
+  end # eval
+end # loop
+
 #################################
 # getindex ######################
 #################################

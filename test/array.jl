@@ -54,6 +54,10 @@ facts("Array") do
     @fact (op ./ cl)[1].value =>  1.0051321041627068
   end
   
+  context("Array of SeriesPair{T,Bool}") do
+    @fact sum(value(op .> 122)) => 311
+  end
+
   context("head and tail") do
     @fact length(head(op))  => 1 
     @fact length(tail(op))  => 504 

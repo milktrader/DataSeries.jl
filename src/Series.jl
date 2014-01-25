@@ -40,6 +40,10 @@ function isless(sp1::SeriesPair, sp2::SeriesPair)
   end
 end
 
+function isless(sp::SeriesPair, n::Union(Float64, Int))
+  isless(sp.value, n)
+end
+
 #################################
 ###### show #####################
 #################################
