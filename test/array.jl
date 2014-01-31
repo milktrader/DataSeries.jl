@@ -1,8 +1,8 @@
 using MarketData
 
-nam = SeriesArray([1:3], [2:4], "test")
-boo = SeriesArray([1:3], trues(3))
-arr = Array(op, cl[2:end])
+nam    = SeriesArray([1:3], [2:4], "test")
+boo    = SeriesArray([1:3], trues(3))
+ky, ar = Array(op, cl[2:end])
 
 facts("Array") do
   
@@ -10,7 +10,7 @@ facts("Array") do
     @fact sum(value(boo)) => 3
   end
   
-  context( "arrays with nammes") do
+  context( "arrays with names") do
     @fact nam[1].name => "test" 
     @fact nam[2].name => "test" 
     @fact nam[3].name => "test"
@@ -32,15 +32,15 @@ facts("Array") do
   end
   
   context("construct Array of values") do
-    @fact size(arr)                    => (505,2)
-    @fact round(sum(arr[2:end,2]), 2)  => 62216.27
-    @fact typeof(arr)                  => Array{Float64, 2}
-    @fact isnan(arr[1,2])              => true
+    @fact size(ar)                    => (505,2)
+    @fact round(sum(ar[2:end,2]), 2)  => 62216.27
+    @fact typeof(ar)                  => Array{Float64, 2}
+    @fact isnan(ar[1,2])              => true
   end
   
-  context("remove rows that have namN") do
-    @fact size(removenan(arr))                   => (504,2) 
-    @fact isnan(sum(removenan(arr)))             => false 
+  context("remove rows that have NaN") do
+    @fact size(removenan(ar))                   => (504,2) 
+    @fact isnan(sum(removenan(ar)))             => false 
     @fact length(lag(op))                        => 505 
     @fact isnan(sum([v.value for v in lag(op)])) => true
   end
