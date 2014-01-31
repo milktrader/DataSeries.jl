@@ -51,7 +51,7 @@ function Array{T,V}(args::Array{SeriesPair{T,V},1}...)
         arr[k,i] = args[i][j].value 
       end
     end
-  arr
+  key, arr
 end
 
 #################################
