@@ -11,10 +11,8 @@ before_install:
     - git config --global user.name "Travis User"
     - git config --global user.email "travis@example.net"
 script:
-    - julia -e 'versioninfo(); Pkg.init();'
-    # uncomment when rened PR merged, and remove the next line that calls the forked repo
-    #- julia -e 'Pkg.add("Datetime"); Pkg.add("FactCheck"); Pkg.clone("git://github.com/milktrader/Series.jl.git"); Pkg.clone("git://github.com/JuliaQuant/MarketData.jl.git");'
-    - julia -e 'Pkg.add("Datetime"); Pkg.clone("git://github.com/rened/FactCheck.jl"); Pkg.clone("git://github.com/milktrader/Series.jl.git"); Pkg.clone("git://github.com/JuliaQuant/MarketData.jl.git");'
+    - julia -e 'versioninfo();'
+    - julia -e 'Pkg.clone("git://github.com/milktrader/Series.jl.git"); Pkg.resolve();'
     - mkdir -p ~/.julia/Series
     - cp -R ./* ~/.julia/Series/
     - julia ./test/travis.jl
