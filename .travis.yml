@@ -14,7 +14,7 @@ script:
     - julia -e 'versioninfo(); Pkg.init();'
     # uncomment when rened PR merged, and remove the next line that calls the forked repo
     #- julia -e 'Pkg.add("Datetime"); Pkg.add("FactCheck"); Pkg.clone("git://github.com/milktrader/Series.jl.git"); Pkg.clone("git://github.com/JuliaQuant/MarketData.jl.git");'
-    - julia -e 'Pkg.add("Datetime"); Pkg.clone("git://github.com/rened/FactCheck.jl"); Pkg.clone("git://github.com/milktrader/Series.jl.git"); Pkg.clone("git://github.com/JuliaQuant/MarketData.jl.git");'
+    - julia -e 'Pkg.add("Datetime"); Pkg.add("Iterators"); Pkg.clone("git://github.com/rened/FactCheck.jl"); Pkg.clone("git://github.com/milktrader/Series.jl.git"); Pkg.clone("git://github.com/JuliaQuant/MarketData.jl.git");'
     - mkdir -p ~/.julia/Series
     - cp -R ./* ~/.julia/Series/
     - julia ./test/travis.jl
