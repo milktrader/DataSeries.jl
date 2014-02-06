@@ -17,7 +17,9 @@ export SeriesPair,
        percentchange, 
        moving, upto,  
        byyear, bymonth, byday, bydow, bydoy, 
-       from, to, collapse 
+       from, to, collapse,
+       sortandremoveduplicates
+
   
 abstract AbstractSeriesPair
 
@@ -33,14 +35,14 @@ SeriesPair{T,V}(x::T,y::V) = SeriesPair{T,V}(x::T,y::V,"value")
 ###### isless ###################
 #################################
 
-function isless(sp1::SeriesPair, sp2::SeriesPair)
+function Base.isless(sp1::SeriesPair, sp2::SeriesPair)
   a, b = sp1.index, sp2.index
   if !isequal(a, b)
    return isless(a, b)
   end
 end
 
-function isless(sp::SeriesPair, n::Union(Float64, Int))
+function Base.isless(sp::SeriesPair, n::Union(Float64, Int))
   isless(sp.value, n)
 end
 
@@ -48,7 +50,7 @@ end
 ###### show #####################
 #################################
 
-function show(io::IO, p::SeriesPair)
+function Base.show(io::IO, p::SeriesPair)
   typeof(p.value) == Float64?
   print(io, p.index, "  ",  join([@sprintf("%.4f",x) for x in p.value]," ")):
   print(io, p.index, "  ",  p.value)
@@ -58,7 +60,7 @@ end
 ###### getindex #################
 #################################
 
-function getindex{T <: Date{ISOCalendar}, V}(sa::Array{SeriesPair{T, V}, 1}, mydate::Date{ISOCalendar})
+function Base.getindex{T <: Date{ISOCalendar}, V}(sa::Array{SeriesPair{T, V}, 1}, mydate::Date{ISOCalendar})
   for i in 1:size(sa,1)
     if mydate == sa[i].index 
       return sa[i] 
